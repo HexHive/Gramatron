@@ -12,8 +12,13 @@ a sample campaign and incorporate new grammars is presented below:
 - Pull the docker image and spawn a shell inside it
 ```
 docker pull prashast94/gramatron:latest
-docker run --security-opt seccomp=unconfined -it gramatron:latest /bin/bash
+docker run --security-opt seccomp=unconfined -it prashast94/gramatron:latest /bin/bash
 ```
+    - To pull the gramatron version that's setup for Ubuntu focal instead run:
+    ```
+    docker pull prashast94/gramatron:focal
+    docker run --security-opt seccomp=unconfined -it prashast94/gramatron:focal /bin/bash
+    ```
 
 - Setup a test target
 ```

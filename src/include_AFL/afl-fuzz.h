@@ -352,6 +352,10 @@ struct afl_pass_stat {
 
 typedef struct afl_state {
 
+  int init_state;
+  int curr_state;
+  int final_state;
+  int gf_numstates; 
   /* Position of this state in the global states list */
   u32 _id;
 
@@ -630,6 +634,13 @@ typedef struct afl_state {
   u8 *map_tmp_buf;
 
 } afl_state_t;
+
+
+int init_state;
+int curr_state;
+int final_state;
+int numstates; 
+state* create_pda(afl_state_t*, u8*);
 
 struct custom_mutator {
 

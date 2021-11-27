@@ -44,13 +44,6 @@ typedef struct buckethash {
     int freq;
 } buckethash;
 
-int init_state;
-int curr_state;
-int final_state;
-int numstates; 
-
-
-
 /*****************
 / DYNAMIC ARRAY FOR WALKS
 *****************/
@@ -115,7 +108,6 @@ typedef struct {
 
 /* Prototypes*/
 Array* slice(Array*, int);
-state* create_pda(u8*);
 Array *gen_input(state*, Array*);
 Array *gen_input_count(state*, Array*, int*);
 int updatebucket(map_t, int);

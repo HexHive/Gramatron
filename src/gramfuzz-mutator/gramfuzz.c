@@ -51,6 +51,12 @@ my_mutator_t *afl_custom_init(afl_state_t *afl, unsigned int seed) {
 
   }
 
+  init_state = afl->init_state;
+  final_state = afl->final_state;
+  curr_state = 0;
+  numstates = afl->gf_numstates;
+
+
   data->afl = afl;
   data->seed = seed;
     

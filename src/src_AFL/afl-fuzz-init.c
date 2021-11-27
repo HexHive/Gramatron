@@ -2428,7 +2428,7 @@ void save_cmdline(afl_state_t *afl, u32 argc, char **argv) {
 
 }
 
-state *create_pda(u8* automaton_file) {
+state *create_pda(afl_state_t *afl, u8* automaton_file) {
     struct json_object *parsed_json;
     state *pda;
     json_object *source_obj, *attr;
@@ -2441,16 +2441,16 @@ state *create_pda(u8* automaton_file) {
     // Getting final state
     source_obj = json_object_object_get(parsed_json, "final_state");
     printf("\t\nFinal=%s\n",json_object_get_string(source_obj));
-    final_state = atoi(json_object_get_string(source_obj));
+    afl->final_state = atoi(json_object_get_string(source_obj));
 
     // Getting initial state
     source_obj = json_object_object_get(parsed_json, "init_state");
-    init_state = atoi(json_object_get_string(source_obj));
+    afl->init_state = atoi(json_object_get_string(source_obj));
     printf("\tInit=%s\n", json_object_get_string(source_obj));
 
     // Getting number of states 
     source_obj = json_object_object_get(parsed_json, "numstates");
-    numstates = atoi(json_object_get_string(source_obj)) + 1;
+    afl->gf_numstates = atoi(json_object_get_string(source_obj)) + 1;
     printf("\tNumStates=%d\n", numstates);
     
     // Allocate state space for each pda state

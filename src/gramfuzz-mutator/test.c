@@ -3,7 +3,7 @@
 #include "afl-fuzz.h"
 #define NUMINPUTS 50 
 
-state *create_pda(u8* automaton_file) {
+state *create_pda(afl_state_t *afl, u8* automaton_file) {
     struct json_object *parsed_json;
     state *pda;
     json_object *source_obj, *attr;
@@ -83,7 +83,7 @@ state *create_pda(u8* automaton_file) {
 
 void SanityCheck(char *automaton_path) {
 
-    state* pda = create_pda(automaton_path);
+    state* pda = create_pda(NULL, automaton_path);
     int count = 0, state;
     Get_Dupes_Ret* getdupesret; 
     IdxMap_new* statemap;

@@ -276,7 +276,7 @@ int main(int argc, char **argv_orig, char **envp) {
 
       case 'a': /* The automaton file*/ 
         automaton_file = optarg;
-        afl->pda = create_pda(automaton_file);
+        afl->pda = create_pda(afl, automaton_file);
         // if (! afl->afl_env.numstates) { 
         //     FATAL("Set NUMSTATES env variable to `numstates + 1`");
         //     exit(1);
